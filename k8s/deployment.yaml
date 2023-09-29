@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodejs-app-deployment
+spec:
+  replicas: 3 # adjust this number as per your requirement
+  selector:
+    matchLabels:
+      app: my-nodejs-app
+  template:
+    metadata:
+      labels:
+        app: my-nodejs-app
+    spec:
+      containers:
+        - name: my-nodejs-app
+          image: my-nodejs-app # this image is built locally
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000 # This should match the port in your app's code
+
